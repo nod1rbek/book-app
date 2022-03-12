@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragment.html :: head('Book Update Page')">
+</head>
+<body>
+<section th:include="fragment.html :: navbar"></section>
+<section>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6 offset-3">
+                <form method="post">
+                    <div class="form-group">
+                        <label for="book_name">Name</label>
+                        <input type="text" class="form-control" name="name" th:value="${book.name}" id="book_name"
+                               placeholder="Name...">
+                    </div>
+                    <div class="form-group">
+                        <label for="book_author">Author</label>
+                        <input type="text" class="form-control" th:value="${book.author}" name="author" id="book_author"
+                               placeholder="John Doe...">
+                    </div>
+                    <div class="form-group">
+                        <label for="book_page_count">Page Count</label>
+                        <input type="number" class="form-control" th:value="${book.pageCount}" name="pageCount"
+                               id="book_page_count"
+                               placeholder="0,1,2, ... ">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

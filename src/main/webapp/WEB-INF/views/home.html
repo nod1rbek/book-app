@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragment.html :: head('Home')"></head>
+<body>
+<section th:include="fragment.html :: navbar"></section>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-4">
+            <a th:href="${book.path}">
+                <img th:src="${book.imgPath}" width="320px">
+            </a>
+        </div>
+        <div class="col-8">
+            <table class="table table-bordered mt-5">
+                <thead>
+                <h1 class="text-primary text-center">Book information</h1>
+                </thead>
+                <tbody>
+                <tr>
+                    <th><b>Book name</b></th>
+                    <td th:text="${book.name}"></td>
+                </tr>
+                <tr>
+                    <th><b>Author</b></th>
+                    <td th:text="${book.author}"></td>
+                </tr>
+                <tr>
+                    <th><b>Page count</b></th>
+                    <td th:text="${book.pageCount}"></td>
+                </tr>
+                <tr>
+                    <th><b>Download</b></th>
+                    <td><a th:href="${book.path}" class="btn btn-primary">Download</a></td>
+                    <a th:href="@{/book/delete/{id}/(id=${book.id}) }" class="btn btn-danger">Delete</a>
+                    <a th:href="@{/book/update/{id}/(id=${book.id}) }" class="btn btn-secondary">Update</a>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

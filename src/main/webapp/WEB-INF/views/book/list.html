@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="fragment.html :: head('Book List Page')">
+</head>
+<body>
+<section th:include="fragment.html :: navbar"></section>
+<section th:include="popups.html :: create_book_modal"></section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="mx-auto">
+                <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#createBookModal">
+                    <i class="fa fa-plus"></i> Add
+                </button>
+                <table class="table table-bordered table-striped" style="width: 850px">
+                    <thead class="table-primary">
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Details</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr th:each="book, iter : ${books}">
+                        <td>
+                            <a th:href="${book.path}">
+                                <img th:src="@{${book.imgPath}}" width="100px"/>
+                            </a>
+                        </td>
+                        <td th:text="${book.name}"></td>
+                        <td>
+                            <a th:href="@{/book/detail/{id}/(id=${book.id}) }" class="link">Book Informations</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section th:include="fragment.html :: js_sources"></section>
+</body>
+</html>
